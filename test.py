@@ -21,10 +21,11 @@ from ultralytics import YOLO
 
 def getVideoStreaming():
     # Load the YOLOv8 model
-    model = YOLO('C:/Users/USER/Downloads/ultralytics-main/runs/detect/train35/weights/best.pt')
+    #model = YOLO('C:/Users/USER/Downloads/ultralytics-main/runs/detect/train35/weights/best.pt')
+    model = YOLO('/app/runs/detect/train35/weights/best.pt')
 
     # 동영상 파일 사용시
-    video_path = "C:/Users/USER/Downloads/as.mp4"
+    video_path = "/app/as.mp4"
 
     # 비디오 캡처 객체 생성
     cap = cv2.VideoCapture(video_path)
