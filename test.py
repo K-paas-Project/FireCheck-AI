@@ -44,6 +44,7 @@ def getVideoStreaming():
         # 결과가 발생하면 'event' 출력
         if results[0].speed:
             print('event')
+            yield "event: alarm\ndata: {}\n\n"
 
         # 이미지를 바이너리로 인코딩
         ret, buffer = cv2.imencode('.jpg', annotated_frame)
