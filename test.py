@@ -21,7 +21,7 @@ from ultralytics import YOLO
 
 def getVideoStreaming():
     # Load the YOLOv8 model
-    #model = YOLO('C:/Users/USER/Downloads/ultralytics-main/runs/detect/train35/weights/best.pt')
+    # model = YOLO('C:/Users/USER/Downloads/ultralytics-main/runs/detect/train35/weights/best.pt')
     model = YOLO('/app/runs/detect/train35/weights/best.pt')
 
     # 동영상 파일 사용시
@@ -42,9 +42,9 @@ def getVideoStreaming():
         annotated_frame = results[0].plot()
 
         # 결과가 발생하면 'event' 출력
-        if results[0].speed:
-            print('event')
-            yield "event: alarm\ndata: {}\n\n"
+        # if results[0].speed:
+        #     print('event')
+        #     yield "event: alarm\ndata: {}\n\n"
 
         # 이미지를 바이너리로 인코딩
         ret, buffer = cv2.imencode('.jpg', annotated_frame)
@@ -55,3 +55,91 @@ def getVideoStreaming():
                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
 
 
+def getVideoStreaming1():
+    video_path1 = "/app/n1.mp4"
+
+    cap = cv2.VideoCapture(video_path1)
+
+    while cap.isOpened():
+        success, frame = cap.read()
+        if not success:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        # 이미지를 바이너리로 인코딩
+        ret, buffer = cv2.imencode('.jpg', cap)
+        frame_bytes = bytearray(buffer.tobytes())
+
+        # 바이너리 이미지를 전송
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+
+def getVideoStreaming2():
+    video_path1 = "/app/n2.mp4"
+
+    cap = cv2.VideoCapture(video_path1)
+
+    while cap.isOpened():
+        success, frame = cap.read()
+        if not success:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        # 이미지를 바이너리로 인코딩
+        ret, buffer = cv2.imencode('.jpg', cap)
+        frame_bytes = bytearray(buffer.tobytes())
+
+        # 바이너리 이미지를 전송
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+
+def getVideoStreaming3():
+    video_path1 = "/app/n3.mp4"
+
+    cap = cv2.VideoCapture(video_path1)
+
+    while cap.isOpened():
+        success, frame = cap.read()
+        if not success:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        # 이미지를 바이너리로 인코딩
+        ret, buffer = cv2.imencode('.jpg', cap)
+        frame_bytes = bytearray(buffer.tobytes())
+
+        # 바이너리 이미지를 전송
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+
+def getVideoStreaming4():
+    video_path1 = "/app/n4.mp4"
+
+    cap = cv2.VideoCapture(video_path1)
+
+    while cap.isOpened():
+        success, frame = cap.read()
+        if not success:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        # 이미지를 바이너리로 인코딩
+        ret, buffer = cv2.imencode('.jpg', cap)
+        frame_bytes = bytearray(buffer.tobytes())
+
+        # 바이너리 이미지를 전송
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+
+def getVideoStreaming5():
+    video_path1 = "/app/n5.mp4"
+
+    cap = cv2.VideoCapture(video_path1)
+
+    while cap.isOpened():
+        success, frame = cap.read()
+        if not success:
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        # 이미지를 바이너리로 인코딩
+        ret, buffer = cv2.imencode('.jpg', cap)
+        frame_bytes = bytearray(buffer.tobytes())
+
+        # 바이너리 이미지를 전송
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
