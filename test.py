@@ -1,20 +1,3 @@
-# from ultralytics import YOLO
-#
-# # Load Trained Model
-# model = YOLO("C:/Users/USER/Downloads/ultralytics-main/runs/detect/train7/weights/best.pt")
-#
-# # Get Result
-# results = model.predict("C:/Users/USER/Downloads/a.mp4", conf=0.4, iou=0.65, max_det=300, save=True)
-#
-# # Check
-# for result in results:
-#     labels = result.boxes.cls
-# scores = result.boxes.conf
-# bboxes = result.boxes.xyxy
-#
-# print(labels, scores, bboxes)
-
-
 import cv2
 from ultralytics import YOLO
 
