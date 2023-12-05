@@ -10,26 +10,29 @@ app = FastAPI()
 async def root():
     return {"Hello": "LiVE ~!!"}
 
+def video_streaming_response(generator_func):
+    return StreamingResponse(generator_func(), media_type="multipart/x-mixed-replace; boundary=frame")
+
 @app.get("/fire")
-def video():
-    return StreamingResponse(getVideoStreaming(), media_type="multipart/x-mixed-replace; boundary=frame")
+def fire_video():
+    return video_streaming_response(getVideoStreaming)
 
 @app.get("/video1")
-def video():
-    return StreamingResponse(getVideoStreaming1(), media_type="multipart/x-mixed-replace; boundary=frame")
+def video_1():
+    return video_streaming_response(getVideoStreaming1)
 
 @app.get("/video2")
-def video():
-    return StreamingResponse(getVideoStreaming2(), media_type="multipart/x-mixed-replace; boundary=frame")
+def video_2():
+    return video_streaming_response(getVideoStreaming2)
 
 @app.get("/video3")
-def video():
-    return StreamingResponse(getVideoStreaming3(), media_type="multipart/x-mixed-replace; boundary=frame")
+def video_3():
+    return video_streaming_response(getVideoStreaming3)
 
 @app.get("/video4")
-def video():
-    return StreamingResponse(getVideoStreaming4(), media_type="multipart/x-mixed-replace; boundary=frame")
+def video_4():
+    return video_streaming_response(getVideoStreaming4)
 
 @app.get("/video5")
-def video():
-    return StreamingResponse(getVideoStreaming5(), media_type="multipart/x-mixed-replace; boundary=frame")
+def video_5():
+    return video_streaming_response(getVideoStreaming5)

@@ -48,7 +48,7 @@ def getVideoStreaming1():
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', cap)
+        ret, buffer = cv2.imencode('.jpg', frame)
         frame_bytes = bytearray(buffer.tobytes())
 
         # 바이너리 이미지를 전송
@@ -66,7 +66,7 @@ def getVideoStreaming2():
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', cap)
+        ret, buffer = cv2.imencode('.jpg', frame)
         frame_bytes = bytearray(buffer.tobytes())
 
         # 바이너리 이미지를 전송
@@ -84,7 +84,7 @@ def getVideoStreaming3():
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', cap)
+        ret, buffer = cv2.imencode('.jpg', frame)
         frame_bytes = bytearray(buffer.tobytes())
 
         # 바이너리 이미지를 전송
@@ -102,7 +102,7 @@ def getVideoStreaming4():
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', cap)
+        ret, buffer = cv2.imencode('.jpg', frame)
         frame_bytes = bytearray(buffer.tobytes())
 
         # 바이너리 이미지를 전송
@@ -120,7 +120,7 @@ def getVideoStreaming5():
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', cap)
+        ret, buffer = cv2.imencode('.jpg', frame)
         frame_bytes = bytearray(buffer.tobytes())
 
         # 바이너리 이미지를 전송
