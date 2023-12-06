@@ -40,20 +40,25 @@ def getVideoStreaming():
 
 def getVideoStreaming1():
     video_path1 = "/app/n1.mp4"
-
     cap = cv2.VideoCapture(video_path1)
 
     while cap.isOpened():
         success, frame = cap.read()
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', frame)
-        frame_bytes = bytearray(buffer.tobytes())
+            continue
 
-        # 바이너리 이미지를 전송
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        # Encode the image into binary
+        ret, buffer = cv2.imencode('.jpg', frame)
+        if not ret:
+            continue
+
+        frame_bytes = buffer.tobytes()
+
+        yield (
+            b'--frame\r\n'
+            b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n'
+        )
 
 
 def getVideoStreaming2():
@@ -65,14 +70,19 @@ def getVideoStreaming2():
         success, frame = cap.read()
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        # 이미지를 바이너리로 인코딩
+            continue
+
+        # Encode the image into binary
         ret, buffer = cv2.imencode('.jpg', frame)
-        frame_bytes = bytearray(buffer.tobytes())
+        if not ret:
+            continue
 
-        # 바이너리 이미지를 전송
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        frame_bytes = buffer.tobytes()
 
+        yield (
+                b'--frame\r\n'
+                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n'
+        )
 
 def getVideoStreaming3():
     video_path1 = "/app/n3.mp4"
@@ -83,14 +93,19 @@ def getVideoStreaming3():
         success, frame = cap.read()
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        # 이미지를 바이너리로 인코딩
+            continue
+
+        # Encode the image into binary
         ret, buffer = cv2.imencode('.jpg', frame)
-        frame_bytes = bytearray(buffer.tobytes())
+        if not ret:
+            continue
 
-        # 바이너리 이미지를 전송
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        frame_bytes = buffer.tobytes()
 
+        yield (
+                b'--frame\r\n'
+                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n'
+        )
 
 def getVideoStreaming4():
     video_path1 = "/app/n4.mp4"
@@ -101,14 +116,19 @@ def getVideoStreaming4():
         success, frame = cap.read()
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        # 이미지를 바이너리로 인코딩
+            continue
+
+        # Encode the image into binary
         ret, buffer = cv2.imencode('.jpg', frame)
-        frame_bytes = bytearray(buffer.tobytes())
+        if not ret:
+            continue
 
-        # 바이너리 이미지를 전송
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        frame_bytes = buffer.tobytes()
 
+        yield (
+                b'--frame\r\n'
+                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n'
+        )
 
 def getVideoStreaming5():
     video_path1 = "/app/n5.mp4"
@@ -119,10 +139,16 @@ def getVideoStreaming5():
         success, frame = cap.read()
         if not success:
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        # 이미지를 바이너리로 인코딩
-        ret, buffer = cv2.imencode('.jpg', frame)
-        frame_bytes = bytearray(buffer.tobytes())
+            continue
 
-        # 바이너리 이미지를 전송
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        # Encode the image into binary
+        ret, buffer = cv2.imencode('.jpg', frame)
+        if not ret:
+            continue
+
+        frame_bytes = buffer.tobytes()
+
+        yield (
+                b'--frame\r\n'
+                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n'
+        )
