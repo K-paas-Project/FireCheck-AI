@@ -1,10 +1,26 @@
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from test import getVideoStreaming, getVideoStreaming1, getVideoStreaming2, getVideoStreaming3, getVideoStreaming4, \
     getVideoStreaming5
 
 app = FastAPI()
+
+origins = ["*"]
+
+origins = [
+    "http://localhost:3000",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
