@@ -4,7 +4,7 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 
-def compress_image(image, quality=85):
+def compress_image(image, quality=50):
     # OpenCV 이미지를 Pillow 이미지로 변환
     pil_image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
