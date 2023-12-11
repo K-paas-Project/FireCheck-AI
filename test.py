@@ -1,5 +1,19 @@
 import cv2
 from ultralytics import YOLO
+import numpy as np
+from io import BytesIO
+from PIL import Image
+
+def compress_image(image, quality=85):
+    # OpenCV 이미지를 Pillow 이미지로 변환
+    pil_image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+
+    # 이미지를 BytesIO에 저장하고 JPEG 형식으로 압축
+    output_buffer = BytesIO()
+    pil_image.save(output_buffer, format="JPEG", quality=quality)
+
+    # 압축된 이미지 바이너리를 반환
+    return output_buffer.getvalue()
 
 
 def getVideoStreaming():
@@ -33,9 +47,12 @@ def getVideoStreaming():
         ret, buffer = cv2.imencode('.jpg', annotated_frame)
         frame_bytes = bytearray(buffer.tobytes())
 
+        # 이미지를 압축
+        compressed_frame = compress_image(annotated_frame)
+
         # 바이너리 이미지를 전송
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + compressed_frame + b'\r\n')
 
 
 def getVideoStreaming1():
